@@ -80,6 +80,7 @@ void setup() {
 
 void draw() {
   background(0);
+  pointdraw();
   
   for(int i=0;i<SIZE;i++) {
     if(ripples[i].getFlag()) {
