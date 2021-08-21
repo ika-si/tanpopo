@@ -1,14 +1,14 @@
 float FRICTION = 0.985;
 
-public class Ripple{
-  int x,y;
+public class Ripple {
+  int x, y;
   float dia;
   float speed;
   int colorH;
   boolean flag;
-  
+
   Ripple() {
-    init(0,0,0,0);
+    init(0, 0, 0, 0);
     flag = false;
   }
 
@@ -32,32 +32,18 @@ public class Ripple{
 
   public void rippleDraw() {
     noFill();
-  
-    if(speed > 1.0) {
+
+    if (speed > 1.0) {
       stroke(colorH, 60, 99, 100*(speed-1)/3);
       strokeWeight(4);
-      ellipse(x,y,dia,dia);
+      ellipse(x, y, dia, dia);
     }
-    
-    /*
-    if(speed > 1.5) {
-      stroke(colorH, 60, 99, 100*(speed-1.5)/3);
-      strokeWeight(2);
-      ellipse(x,y,dia*0.7,dia*0.7);
-    }
-    if(speed > 2.0) {
-      stroke(colorH, 60, 99, 100*(speed-2)/3);
-      strokeWeight(1);
-      ellipse(x,y,dia*0.6,dia*0.6);
-    }
-    */
-    
   }
 
   public void move() {
     dia += speed;
     speed *= FRICTION;
-    if(speed < 0.5) {
+    if (speed < 0.5) {
       flag = false;
     }
   }
