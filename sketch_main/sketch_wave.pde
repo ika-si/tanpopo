@@ -2,6 +2,7 @@ float FRICTION = 0.985;
 
 public class Ripple {
   int x, y;
+  
   float dia;
   float speed;
   int colorH;
@@ -68,6 +69,4 @@ public class Point extends Ripple{
     this.dia = src.dia;
     this.flag = src.flag;
   }
-  
-  
 }

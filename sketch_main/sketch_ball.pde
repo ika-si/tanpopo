@@ -3,20 +3,23 @@ public class Ball {
   int x, y;
   int vx, vy;
   int r = 20;
+  int maxSpeed = 5;
+  int minSpeed = 4;
+  
   color beforeColor;
 
   Ball() {
     x = int(random(r, width-r));
     y = int(random(r, height-r));
     if (random(-1, 1)<0) {
-      vx = int(random(3, 4));
+      vx = int(random(minSpeed, maxSpeed));
     } else {
-      vx = int(random(-4, 3));
+      vx = int(random(-maxSpeed, -minSpeed));
     }
     if (random(-1, 1)<0) {
-      vy = int(random(3, 4));
+      vy = int(random(minSpeed, maxSpeed));
     } else {
-      vy = int(random(-4, 3));
+      vy = int(random(-maxSpeed, -minSpeed));
     }
     beforeColor = color(0, 0, 0);
   }
@@ -42,13 +45,12 @@ public class Ball {
 
   public boolean judge_collision() {
     boolean flag = false;
-    if (get(x, y) != beforeColor && get(x, y)!=color(0, 0, 0) && get(x, y)!=color(#FFFFFF)) {
+    if (get(x, y) != beforeColor && get(x, y)!=color(0, 0, 0)) {
       flag = true;
       beforeColor = get(x, y);
     } else {
       flag = false;
     }
-
     return flag;
   }
 }

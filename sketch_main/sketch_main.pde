@@ -2,8 +2,8 @@ int SIZE = 20; //マウスクリックとキーボードで生成できる波の
 int pointSIZE = 100; //ボールから生成できる波の上限数
 int ballSIZE = 10; //ボールの数
 
-int maxSpeed = 5;
-int minSpeed = 8; //波の進行速度設定
+float maxSpeed = 5;
+float minSpeed = 8; //波の進行速度設定
 
 int frameCut = 10; //生成する波の個数を間引く（値が大きいほど間引かれる）
 
