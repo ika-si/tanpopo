@@ -3,8 +3,8 @@ public class Ball {
   int x, y;
   int vx, vy;
   int r = 20;
-  int maxSpeed = 5;
-  int minSpeed = 4;
+  float maxSpeed = 5;
+  float minSpeed = 4;
   
   color beforeColor;
 
