@@ -2,11 +2,12 @@ public class Ball {
 
   int x, y;
   int vx, vy;
+  int r = 20;
   color beforeColor;
 
   Ball() {
-    x = int(random(50, 700));
-    y = int(random(50, 700));
+    x = int(random(r, width-r));
+    y = int(random(r, height-r));
     if (random(-1, 1)<0) {
       vx = int(random(3, 4));
     } else {
@@ -24,7 +25,7 @@ public class Ball {
     noFill();
     stroke(#FFFFFF);
     strokeWeight(2);
-    ellipse(x, y, 20, 20);
+    ellipse(x, y, r, r);
   }
 
   public void move() {

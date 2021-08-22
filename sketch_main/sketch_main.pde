@@ -1,14 +1,17 @@
-int SIZE = 20;
-int pointSIZE = 100;
-int ballSIZE = 10;
+int SIZE = 20; //マウスクリックとキーボードで生成できる波の上限数
+int pointSIZE = 100; //ボールから生成できる波の上限数
+int ballSIZE = 10; //ボールの数
+
+int maxSpeed = 5;
+int minSpeed = 8; //波の進行速度設定
+
+int frameCut = 10; //生成する波の個数を間引く（値が大きいほど間引かれる）
 
 Ripple[] ripples = new Ripple[SIZE];
 Point[] points = new Point[pointSIZE];
 Ball[] balls = new Ball[ballSIZE];
 
 
-boolean pointJudge;
-//中心からの波を一つにする
 
 void setup() {
 
@@ -44,7 +47,7 @@ void draw() {
   for (int i=0; i<pointSIZE; i++) {
     if (points[i].getFlag()) {
       points[i].move();
-      points[i].pointDraw();
+      points[i].rippleDraw();
     }
   }
 
@@ -53,11 +56,11 @@ void draw() {
   }
 
   for (int k=ballSIZE-1; k>0; k--) { 
-    if (balls[k].judge_collision() && frameCount%5==0) {
+    if (balls[k].judge_collision() && frameCount%frameCut==0) {
       for (int i=pointSIZE-1; i>0; i--) {
         points[i] = new Point(points[i-1]);
       }
-      points[0].init(balls[k].x, balls[k].y, random(5, 7), int(random(10, 80)));
+      points[0].init(balls[k].x, balls[k].y, random(minSpeed, maxSpeed), int(random(10, 80)));
     }
   }
 }

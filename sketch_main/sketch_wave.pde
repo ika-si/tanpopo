@@ -52,3 +52,22 @@ public class Ripple {
     return flag;
   }
 }
+
+public class Point extends Ripple{
+  
+  Point() {
+    init(0, 0, 0, 0);
+    flag = false;
+  }
+
+  public Point(Point src) {
+    this.x = src.x;
+    this.y = src.y;
+    this.speed = src.speed;
+    this.colorH = src.colorH;
+    this.dia = src.dia;
+    this.flag = src.flag;
+  }
+  
+  
+}
