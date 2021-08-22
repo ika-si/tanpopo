@@ -2,6 +2,7 @@ float FRICTION = 0.985;
 
 public class Ripple {
   int x, y;
+  
   float dia;
   float speed;
   int colorH;
@@ -50,5 +51,22 @@ public class Ripple {
 
   public boolean getFlag() {
     return flag;
+  }
+}
+
+public class Point extends Ripple{
+  
+  Point() {
+    init(0, 0, 0, 0);
+    flag = false;
+  }
+
+  public Point(Point src) {
+    this.x = src.x;
+    this.y = src.y;
+    this.speed = src.speed;
+    this.colorH = src.colorH;
+    this.dia = src.dia;
+    this.flag = src.flag;
   }
 }
