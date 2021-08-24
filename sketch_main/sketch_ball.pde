@@ -47,6 +47,7 @@ public class Ball {
     boolean flag = false;
     if (get(x, y) != beforeColor && get(x, y)!=color(0, 0, 0)) {
       flag = true;
+      
       beforeColor = get(x, y);
     } else {
       flag = false;

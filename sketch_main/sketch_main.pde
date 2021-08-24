@@ -5,13 +5,13 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-Minim minim = new Minim(this);
-AudioPlayer player;
 
 
 int SIZE = 20; //マウスクリックとキーボードで生成できる波の上限数
 int pointSIZE = 100; //ボールから生成できる波の上限数
 int ballSIZE = 10; //ボールの数
+int audioSIZE = 15;
+
 
 float maxSpeed = 5;
 float minSpeed = 8; //波の進行速度設定
@@ -22,17 +22,26 @@ Ripple[] ripples = new Ripple[SIZE];
 Point[] points = new Point[pointSIZE];
 Ball[] balls = new Ball[ballSIZE];
 
+Minim minim = new Minim(this);
+AudioPlayer player;
+String audio[] = {"F3","F4","G3","A3","A4","B3","B4","C3","C4","C5","D3","D4","E3","E4","G4"};
+AudioPlayer players[] = new AudioPlayer[audioSIZE];
+
 
 
 void setup() {
-  
-  player = minim.loadFile("bgm.wav");
 
   size(700, 700);
   colorMode(HSB, 100);
   background(0);
   smooth();
   frameRate(60);
+  
+  player = minim.loadFile("bgm.wav");
+  
+  for (int i=0; i<audioSIZE; i++){
+    players[i] = minim.loadFile(audio[i]+".wav");
+  }
 
   for (int i=0; i<SIZE; i++) {
     ripples[i] = new Ripple();
@@ -47,7 +56,10 @@ void setup() {
 
 void draw() {
   background(0);
-  player.play();
+  
+  if(!player.isPlaying()){
+    //player.play(0);
+  }
 
 
 
@@ -75,6 +87,7 @@ void draw() {
         points[i] = new Point(points[i-1]);
       }
       points[0].init(balls[k].x, balls[k].y, random(minSpeed, maxSpeed), int(random(10, 80)));
+      players[int(random(0,audioSIZE))].play(0);
     }
   }
 }
