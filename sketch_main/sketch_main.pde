@@ -58,7 +58,7 @@ void draw() {
   background(0);
   
   if(!player.isPlaying()){
-    //player.play(0);
+    //player.play(0); //ここのコメントアウトを外すとバックグラウンドミュージック再生
   }
 
 
